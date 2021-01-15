@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Модели в Django</title>
+</head>
+<body class="container"  bgcolor="#e6ddee">
+    <div id="header" >
+        <h5 align="right"><a href="/accounts/login/">Выйти из аккаунта</a></h5>
+        <h1 align="center"><font face="Monotype Corsiva" size="+6" color="black">Пользователи</font><h1>
+            <hr align="center" width="90%" size="3" color="#ae8fb1"/>
+        <h3 align="right"><a href = "{% url 'home' %}">Домашнаяя страница</a></h3>
+    </div>
+
+    <table border="1" width="100%">
+    <tr bgcolor="#ae8fb1">
+        <th> Добавление пользователей </th>
+        <th> Удаление пользователей </th>
+        <th> Изменение пользователей </th>
+    </tr>
+    <tr>
+        <th align="center">
+            <form method="POST" action="add/">
+            {% csrf_token %}
+            <table>
+                {{ form }}
+            </table>
+                <br>
+            <input type="submit" value="Добавить пользователя">
+            </form>
+        </th>
+        <th align="center">
+            <form method="POST" action="del/">
+            {% csrf_token %}
+            <label>Введите id</label>
+            <input type= "number" name="del_int"><br>
+            <br>
+            <input type= "submit" value="Удалить пользователя">
+            </form>
+        </th>
+        <th align="center">
+            <br>
+            <form method="POST" action="update/">
+            {% csrf_token %}
+            <label>Введите id</label>
+            <input type= "number" name="update_int"><br>
+            <table>
+                {{ form }}
+            </table>
+            <br>
+            <input type= "submit" value="Изменить пользователя">
+            </form>
+        </th>
+    </tr>
+    </table>
+
+	<form method="POST" action="show/">
+        {% csrf_token %}
+        <table border="1" width="100%">
+            <tr align="center" bgcolor="#ae8fb1">
+                <th>Id</th>
+                <th>Номер пользователя</th>
+                <th>Имя пользователя</th>
+                <th>Должность</th>
+            </tr>
+        {% for i in data %}
+            <tr align="center">
+                <td>{{ i.id }}</td>
+                <td>{{ i.number }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.position }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        </form>
+</body>
+</html>

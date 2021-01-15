@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello Django</title>
+</head>
+<body bgcolor="#e6ddee">
+    <div id="header" >
+        <h5 align="right"><a href="/accounts/login/">Выйти из аккаунта</a></h5>
+        <h1 align="center"><font face="Monotype Corsiva" size="+6" color="black">Главная страница</font><h1>
+        <hr align="center" width="90%" size="3" color="#ae8fb1"/>
+    </div>
+    <table align="center">
+    <tr align="center" >
+        <th>
+    <input style = "width: 200px; height:50px;" type="button" onclick="window.location.href = '{% url 'owner' %}';" value="Владельцы"/>
+        </th>
+    </tr>
+    <tr>
+        <th>
+            <input style = "width: 200px; height:50px;"    type="button" onclick="window.location.href = '{% url 'object' %}';" value="Объекты"/>
+        </th>
+    </tr>
+        <tr>
+        <th>
+            <input style = "width: 200px; height:50px;"  type="button" onclick="window.location.href = '{% url 'event' %}';" value="Мероприятия"/>
+        </th>
+    </tr>
+        <tr>
+        <th>
+            <input style = "width: 200px; height:50px;"  type="button" onclick="window.location.href = '{% url 'popularity' %}';" value="Популярность объектов"/>
+        </th>
+    </tr>
+        <tr>
+        <th>
+            <input style = "width: 200px; height:50px;"  type="button" onclick="window.location.href = '{% url 'users' %}';" value="Пользователи"/>
+        </th>
+    </tr>
+
+    </table>
+</body>
+</html>
