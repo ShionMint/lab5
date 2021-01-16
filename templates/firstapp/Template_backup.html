@@ -7,16 +7,16 @@
 <body class="container"  bgcolor="#e6ddee">
     <div id="header" >
         <h5 align="right"><a href="/accounts/login/">Выйти из аккаунта</a></h5>
-        <h1 align="center"><font face="Monotype Corsiva" size="+6" color="black">Пользователи</font><h1>
+        <h1 align="center"><font face="Monotype Corsiva" size="+6" color="black">Резервные копии</font><h1>
             <hr align="center" width="90%" size="3" color="#ae8fb1"/>
         <h3 align="right"><a href = "{% url 'home' %}">Домашнаяя страница</a></h3>
     </div>
 
     <table border="1" width="100%">
     <tr bgcolor="#ae8fb1">
-        <th> Добавление пользователей </th>
-        <th> Удаление пользователей </th>
-        <th> Изменение пользователей </th>
+        <th> Добавление копии </th>
+        <th> Удаление копии </th>
+        <th> Изменение копии </th>
     </tr>
     <tr>
         <th align="center">
@@ -26,7 +26,7 @@
                 {{ form }}
             </table>
                 <br>
-            <input type="submit" value="Добавить пользователя">
+            <input type="submit" value="Добавить резервную копию">
             </form>
         </th>
         <th align="center">
@@ -35,7 +35,7 @@
             <label>Введите id</label>
             <input type= "number" name="del_int"><br>
             <br>
-            <input type= "submit" value="Удалить пользователя">
+            <input type= "submit" value="Удалить резервную копию">
             </form>
         </th>
         <th align="center">
@@ -48,7 +48,7 @@
                 {{ form }}
             </table>
             <br>
-            <input type= "submit" value="Изменить пользователя">
+            <input type= "submit" value="Изменить резервную копию">
             </form>
         </th>
     </tr>
@@ -59,20 +59,14 @@
         <table border="1" width="100%">
             <tr align="center" bgcolor="#ae8fb1">
                 <th>Id</th>
-                <th>Номер пользователя</th>
-                <th>Имя пользователя</th>
-                <th>Должность</th>
-                <th>Логин</th>
-                <th>Пароль</th>
+                <th>Номер копии</th>
+                <th>Название копии</th>
             </tr>
         {% for i in data %}
             <tr align="center">
                 <td>{{ i.id }}</td>
                 <td>{{ i.number }}</td>
                 <td>{{ i.name }}</td>
-                <td>{{ i.position }}</td>
-                <td>{{ i.login }}</td>
-                <td>{{ i.password }}</td>
             </tr>
         {% endfor %}
         </table>

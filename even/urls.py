@@ -41,6 +41,12 @@ urlpatterns = [
     path('home/users/add/', views.view_user.add_user, name='add_users'),
     path('home/users/del/', views.view_user.del_user, name='del_users'),
     path('home/users/update/', views.view_user.update_user, name='update_users'),
+
+    # Добавление информации о пользователях
+    path('home/backup/', views.index_backup, name='backup'),
+    path('home/backup/add/', views.view_backup.add_backup, name='add_users'),
+    path('home/backup/del/', views.view_backup.del_backup, name='del_users'),
+    path('home/backup/update/', views.view_backup.update_backup, name='update_users'),
 ]
 urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),

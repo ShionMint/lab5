@@ -2,8 +2,8 @@ from django.shortcuts import render
 
 from django.views import View
 from django.http import HttpResponseRedirect, HttpResponse
-from .models import Owner, Object, Event, Popularity, Users
-from .forms import DataOwner, DataObject, DataEvent, DataPopularity, DataUsers
+from .models import Owner, Object, Event, Popularity, Users, Backup_copy
+from .forms import DataOwner, DataObject, DataEvent, DataPopularity, DataUsers, DateBackup
 
 # Create your views here.
 
@@ -161,6 +161,8 @@ class view_user(View):
             add_data.number = request.POST.get("number")
             add_data.name = request.POST.get("name")
             add_data.position = request.POST.get("position")
+            add_data.login = request.POST.get("login")
+            add_data.password = request.POST.get("password")
             add_data.save()
             return HttpResponseRedirect("/home/users")
 
@@ -178,5 +180,37 @@ class view_user(View):
             update_data.number = request.POST.get("number")
             update_data.name = request.POST.get("name")
             update_data.position = request.POST.get("position")
+            update_data.login = request.POST.get("login")
+            update_data.password = request.POST.get("password")
             update_data.save()
             return HttpResponseRedirect("/home/users")
+
+def index_backup(request):
+    index_form = DateBackup()
+    index_data = Backup_copy.objects.all()
+    return render(request, "firstapp/Template_backup.html", {"form": index_form, "data": index_data})
+
+class view_backup(View):
+    def add_backup(request):
+        if request.method == "POST":
+            add_data = Backup_copy()
+            add_data.number = request.POST.get("number")
+            add_data.name = request.POST.get("name")
+            add_data.save()
+            return HttpResponseRedirect("/home/backup")
+
+    def del_backup(request):
+        if request.method == "POST":
+            del_int = request.POST.get("del_int", "")
+            del_data = Backup_copy.objects.get(id=del_int)
+            del_data.delete()
+            return HttpResponseRedirect("/home/backup")
+
+    def update_backup(request):
+        if request.method == "POST":
+            update_int = request.POST.get("update_int", "")
+            update_data = Backup_copy.objects.get(id=update_int)
+            update_data.number = request.POST.get("number")
+            update_data.name = request.POST.get("name")
+            update_data.save()
+            return HttpResponseRedirect("/home/backup")

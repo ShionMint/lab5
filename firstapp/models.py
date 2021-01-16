@@ -35,5 +35,11 @@ class Users(models.Model):
     number = models.IntegerField()
     name = models.CharField(max_length=120)
     position = models.CharField(max_length=120)
+    login = models.CharField(max_length=120)
+    password = models.IntegerField()
     objects = models.Manager()
+
+class Backup_copy(models.Model):
+    number = models.IntegerField()
+    name = models.CharField(max_length=120)
 

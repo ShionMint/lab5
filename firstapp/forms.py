@@ -29,4 +29,9 @@ class DataUsers(forms.Form):
     number = forms.IntegerField(label="Номер пользователя")
     name = forms.CharField(label="ФИО")
     position = forms.CharField(label="Должность")
+    login = forms.CharField(label="Логин")
+    password = forms.CharField(label="Пароль")
 
+class DateBackup(forms.Form):
+    number = forms.IntegerField(label="Номер резервной копии")
+    name = forms.CharField(label="Название резервной копии")
