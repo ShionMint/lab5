@@ -42,4 +42,5 @@ class Users(models.Model):
 class Backup_copy(models.Model):
     number = models.IntegerField()
     name = models.CharField(max_length=120)
+    objects = models.Manager()
 
